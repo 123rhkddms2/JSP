@@ -1,0 +1,17 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>1.스크립트요소</title>
+		<%--
+			날짜 : 2024/01/29
+			이름 : 김광은
+			내용 : CH02.JSP 기본문법	
+		 --%>
+	</head>
+	<body>
+		<h3>1.스크립트요소</h3>
+
+	</body>
+</html>

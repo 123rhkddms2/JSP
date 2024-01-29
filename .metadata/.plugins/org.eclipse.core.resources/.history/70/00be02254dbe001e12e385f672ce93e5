@@ -1,0 +1,17 @@
+package sub1;
+
+public class Account {
+	
+	private String bank;
+	private String id;
+	private String name;
+	private int balance;
+	
+	public Account(String bank, String id, String name, int balance) {
+		this.bank = bank;
+		this.id = id;
+		this.name = name;
+		this.balance = balance;
+	}
+
+}
