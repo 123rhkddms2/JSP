@@ -1,12 +1,12 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>redirectFile</title>
+		<title>responseFile</title>
 	</head>
 	<body>
-		<h3>redirectFile 페이지</h3>
+		<h3>responseFile 페이지</h3>
 		<%
 			response.setHeader("Content-Type", "application/octet-stream");
 		%>
