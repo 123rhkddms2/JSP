@@ -15,6 +15,7 @@
 	
 	try{
 		Class.forName("com.mysql.cj.jdbc.Driver");
+		
 		Connection conn = DriverManager.getConnection(host, user, pass);
 		Statement stmt = conn.createStatement();
 		
@@ -38,15 +39,7 @@
 	}catch(Exception e){
 		e.printStackTrace();
 		}
-
-
-
-
-
-
 %>
-
-
 
 <!DOCTYPE html>
 <html>

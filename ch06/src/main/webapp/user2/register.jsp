@@ -3,10 +3,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>user1::register</title>
+		<title>user2::register</title>
 	</head>
 	<body>
-		<h3>user1 등록</h3>
+		<h3>user2 등록</h3>
 		
 		<a href="../1.Jdbc.jsp">처음으로</a>
 		<a href="./list.jsp">목록보기</a>
@@ -25,12 +25,8 @@
 					<td><input type="date" name="birth"></td>
 				</tr>
 				<tr>
-					<td>휴대폰</td>
-					<td><input type="text" name="hp"></td>
-				</tr>
-				<tr>
-					<td>나이</td>
-					<td><input type="number" name="age"></td>
+					<td>주소</td>
+					<td><input type="text" name="addr"></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right">

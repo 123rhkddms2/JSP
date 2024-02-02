@@ -1,60 +1,63 @@
-<%@page import="ch06.User1DTO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="ch06.User2DTO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String uid = request.getParameter("uid");
 	
-	System.out.println("uid : " + uid);
-
 	// 수정 데이터 조회
 	String host="jdbc:mysql://127.0.0.1:3306/studydb";
 	String user="123rhkddms2";
 	String pass="1234";
 	
-	User1DTO dto = null;
+	User2DTO dto = null;
 	
-	try {
+	try{
+		// 1단계 - JDBC 드라이버 로드
 		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		// 2단계 - DB 접속
 		Connection conn = DriverManager.getConnection(host, user, pass);
-		PreparedStatement psmt = conn.prepareStatement("SELECT * FROM `User1` WHERE `uid`=?");
+		
+		// 3단계 - SQL 실행객체 생성
+		PreparedStatement psmt = conn.prepareStatement("SELECT * FROM `User2` WHERE `uid`=?");
 		psmt.setString(1, uid);
 		
+		// 4단계 - SQL 실행
 		ResultSet rs = psmt.executeQuery();
 		
+		// 5단계 - 결과 처리(SELECT 경우)
 		if(rs.next()){
-			
-			dto = new User1DTO();
+			dto = new User2DTO();
 			dto.setUid(rs.getString(1));
 			dto.setName(rs.getString(2));
 			dto.setBirth(rs.getString(3));
-			dto.setHp(rs.getString(4));
-			dto.setAge(rs.getInt(5));	
+			dto.setAddr(rs.getString(4));		
 		}
+		
+		// 6단계 - DB 종료
 		rs.close();
 		psmt.close();
 		conn.close();
 		
-	
+
 	}catch(Exception e){
 		e.printStackTrace();
 	}
-
-	System.out.println("dto : " + dto);
-
-
+	
 %>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>user1::modify</title>
+		<title>user2::modify</title>
 	</head>
 	<body>
-		<h3>user1 수정</h3>
+		<h3>user2 수정</h3>
 		
 		<a href="../1.Jdbc.jsp">처음으로</a>
 		<a href="./list.jsp">목록보기</a>
@@ -66,19 +69,15 @@
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="name" value="<%= dto.getName()%>"></td>
+					<td><input type="text" name="<%= dto.getName()%>"></td>
 				</tr>
 				<tr>
 					<td>생년월일</td>
-					<td><input type="date" name="birth" value="<%= dto.getBirth()%>"></td>
+					<td><input type="date" name="<%= dto.getBirth()%>"></td>
 				</tr>
 				<tr>
-					<td>휴대폰</td>
-					<td><input type="text" name="hp" value="<%= dto.getHp()%>"></td>
-				</tr>
-				<tr>
-					<td>나이</td>
-					<td><input type="number" name="age" value="<%= dto.getAge()%>"></td>
+					<td>주소</td>
+					<td><input type="text" name="<%= dto.getAddr()%>"></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right">

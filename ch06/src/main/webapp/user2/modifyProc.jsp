@@ -8,9 +8,8 @@
 	String uid = request.getParameter("uid");
 	String name = request.getParameter("name");
 	String birth = request.getParameter("birth");
-	String hp = request.getParameter("hp");
-	String age = request.getParameter("age");
-
+	String addr = request.getParameter("addr");
+	
 	String host="jdbc:mysql://127.0.0.1:3306/studydb";
 	String user="123rhkddms2";
 	String pass="1234";
@@ -20,29 +19,23 @@
 		
 		Connection conn = DriverManager.getConnection(host, user, pass);
 		
-		String sql="UPDATE `User1` SET ";
-			   sql += "`name`=?,";
-			   sql += "`birth`=?,";
-			   sql += "`hp`=?,";
-			   sql += "`age`=? ";
-			   sql += "WHERE `uid`=?";
-		
+		String sql = "UPDATE `User2` SET `name`=?, `birth`=?, `addr`=? WHERE `uid`=?";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		psmt.setString(1, name);
 		psmt.setString(2, birth);
-		psmt.setString(3, hp);
-		psmt.setString(4, age);
-		psmt.setString(5, uid);
+		psmt.setString(3, addr);
+		psmt.setString(4, uid);
 		
 		psmt.executeUpdate();
 		
 		psmt.close();
 		conn.close();
 		
+		
+
 	}catch(Exception e){
 		e.printStackTrace();
 	}
 	
-	response.sendRedirect("./list.jsp");
-	
+	response.sendRedirect("./list/jsp");
 %>
