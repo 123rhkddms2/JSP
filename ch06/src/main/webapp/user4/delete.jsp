@@ -1,41 +1,33 @@
+<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="ch06.User4DTO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-
 	String uid = request.getParameter("uid");
-	String name = request.getParameter("name");
-	String birth = request.getParameter("birth");
-	String addr = request.getParameter("addr");
-	
+
+	// 삭제 데이터 조회
 	String host="jdbc:mysql://127.0.0.1:3306/studydb";
 	String user="123rhkddms2";
 	String pass="1234";
-	
-	try{
-		Class.forName("com.mysql.cj.jdbc.Driver");
 		
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(host, user, pass);
 		
-		String sql = "UPDATE `User2` SET `name`=?, `birth`=?, `addr`=? WHERE `uid`=?";
-		PreparedStatement psmt = conn.prepareStatement(sql);
-		psmt.setString(1, name);
-		psmt.setString(2, birth);
-		psmt.setString(3, addr);
-		psmt.setString(4, uid);
-		
+		PreparedStatement psmt = conn.prepareStatement("DELETE FROM `User4` WHERE `uid`=?");
+		psmt.setString(1, uid);
+			
 		psmt.executeUpdate();
 		
 		psmt.close();
 		conn.close();
 		
-		
-
 	}catch(Exception e){
 		e.printStackTrace();
-	}
-	
+		}
+
 	response.sendRedirect("./list.jsp");
 %>

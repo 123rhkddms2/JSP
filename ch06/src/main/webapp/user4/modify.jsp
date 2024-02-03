@@ -2,7 +2,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="ch06.User2DTO"%>
+<%@page import="ch06.User4DTO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -13,7 +13,7 @@
 	String user="123rhkddms2";
 	String pass="1234";
 	
-	User2DTO dto = null;
+	User4DTO dto = null;
 	
 	try{
 		// 1단계 - JDBC 드라이버 로드
@@ -23,7 +23,7 @@
 		Connection conn = DriverManager.getConnection(host, user, pass);
 		
 		// 3단계 - SQL 실행객체 생성
-		PreparedStatement psmt = conn.prepareStatement("SELECT * FROM `User2` WHERE `uid`=?");
+		PreparedStatement psmt = conn.prepareStatement("SELECT * FROM `User4` WHERE `uid`=?");
 		psmt.setString(1, uid);
 		
 		// 4단계 - SQL 실행
@@ -31,11 +31,13 @@
 		
 		// 5단계 - 결과 처리(SELECT 경우)
 		if(rs.next()){
-			dto = new User2DTO();
+			dto = new User4DTO();
 			dto.setUid(rs.getString(1));
 			dto.setName(rs.getString(2));
-			dto.setBirth(rs.getString(3));
-			dto.setAddr(rs.getString(4));		
+			dto.setGender(rs.getString(3));
+			dto.setAge(rs.getString(4));
+			dto.setHp(rs.getString(5));
+			dto.setAddr(rs.getString(6));		
 		}
 		
 		// 6단계 - DB 종료
@@ -54,10 +56,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>user2::modify</title>
+		<title>user4::modify</title>
 	</head>
 	<body>
-		<h3>user2 수정</h3>
+		<h3>user4 수정</h3>
 		
 		<a href="../1.Jdbc.jsp">처음으로</a>
 		<a href="./list.jsp">목록보기</a>
@@ -72,8 +74,16 @@
 					<td><input type="text" name="name" value="<%= dto.getName()%>"></td>
 				</tr>
 				<tr>
-					<td>생년월일</td>
-					<td><input type="date" name="birth" value="<%= dto.getBirth()%>"></td>
+					<td>성별</td>
+					<td><input type="text" name="gender" value="<%= dto.getGender()%>"></td>
+				</tr>
+				<tr>
+					<td>나이</td>
+					<td><input type="text" name="age" value="<%= dto.getAge()%>"></td>
+				</tr>
+				<tr>
+					<td>전화번호</td>
+					<td><input type="text" name="hp" value="<%= dto.getHp()%>"></td>
 				</tr>
 				<tr>
 					<td>주소</td>
