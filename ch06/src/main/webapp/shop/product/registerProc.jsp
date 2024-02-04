@@ -3,14 +3,15 @@
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 
-	String custId = request.getParameter("custId");
-	String name   = request.getParameter("name");
-	String hp     = request.getParameter("hp");
-	String addr   = request.getParameter("addr");
+	String prodNo = request.getParameter("prodNo");
+	String prodName   = request.getParameter("prodName");
+	String stock     = request.getParameter("stock");
+	String price   = request.getParameter("price");
+	String company   = request.getParameter("company");
 	
 	// DBCP를 이용한 데이터베이스 작업
 	try {
@@ -23,12 +24,13 @@
 		Connection conn = ds.getConnection();
 		
 		// 3단계 - SQL실행 객체 생성
-		String sql = "INSERT INTO `Customer` VALUES (?,?,?,?,NOW())";
+		String sql = "INSERT INTO `Product` VALUES (?,?,?,?,?)";
 		PreparedStatement psmt = conn.prepareStatement(sql);
-		psmt.setString(1, custId);
-		psmt.setString(2, name);
-		psmt.setString(3, hp);
-		psmt.setString(4, addr);
+		psmt.setString(1, prodNo);
+		psmt.setString(2, prodName);
+		psmt.setString(3, stock);
+		psmt.setString(4, price);
+		psmt.setString(5, company);
 		
 		// 4단계 - SQL실행
 		psmt.executeUpdate();

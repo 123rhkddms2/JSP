@@ -3,30 +3,34 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Customer::register</title>
+		<title>Product::register</title>
 	</head>
 	<body>
-		<h3>Customer 등록</h3>
+		<h3>Product 등록</h3>
 		
 		<a href="../../2.DBCP.jsp">처음으로</a>
 		<a href="./list.jsp">목록보기</a>
 		<form action="./registerProc.jsp" method="post">
 			<table border="1">
 				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="custId"></td>
+					<td>상품번호</td>
+					<td><input type="text" name="prodNo"></td>
 				</tr>
 				<tr>
-					<td>이름</td>
-					<td><input type="text" name="name"></td>
+					<td>상품이름</td>
+					<td><input type="text" name="prodName"></td>
 				</tr>				
 				<tr>
-					<td>휴대폰</td>
-					<td><input type="text" name="hp"></td>
+					<td>재고량</td>
+					<td><input type="text" name="stock"></td>
 				</tr>
 				<tr>
-					<td>주소</td>
-					<td><input type="text" name="addr"></td>
+					<td>가격</td>
+					<td><input type="text" name="price"></td>
+				</tr>
+				<tr>
+					<td>회사</td>
+					<td><input type="text" name="company"></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right">
