@@ -1,4 +1,18 @@
+<%@page import="kr.co.jboard1.dto.ArticleDTO"%>
+<%@page import="kr.co.jboard1.dao.ArticleDAO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String no = request.getParameter("no");
+
+	ArticleDAO dao = ArticleDAO.getInstance();
+	
+	// 글 조회	
+	ArticleDTO article = dao.selectArticle(no);
+	
+	// 글 조회 카운트 업데이트
+	dao.updateHitCount(no);
+%>
 <%@ include file="./_header.jsp" %>
 <main>
     <section class="view">
@@ -6,8 +20,9 @@
         <table>
             <tr>
                 <td>제목</td>
-                <td><input type="text" name="title" value="제목입니다." readonly/></td>
+                <td><input type="text" name="title" value="<%= article.getTitle() %>" readonly/></td>
             </tr>
+            <% if(article.getFile() > 0){ %>
             <tr>
                 <td>첨부파일</td>
                 <td>
@@ -15,17 +30,18 @@
                     <span>7회 다운로드</span>
                 </td>
             </tr>
+            <% } %>
             <tr>
                 <td>내용</td>
                 <td>
-                    <textarea name="content" readonly>내용 샘플입니다.</textarea>
+                    <textarea name="content" readonly><%= article.getContent() %></textarea>
                 </td>
             </tr>
         </table>
         <div>
             <a href="#" class="btnDelete">삭제</a>
             <a href="#" class="btnModify">수정</a>
-            <a href="#" class="btnList">목록</a>
+            <a href="/jboard1/list.jsp" class="btnList">목록</a>
         </div>  
         
         <!-- 댓글리스트 -->
