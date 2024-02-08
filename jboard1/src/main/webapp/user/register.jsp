@@ -39,7 +39,7 @@
                     <td>별명</td>
                     <td>
                         <p>공백없이 한글, 영문, 숫자만 입력가능</p>
-                        <input type="text" name="nick"  required placeholder="별명 입력"/>
+                        <input type="text" name="nick" required placeholder="별명 입력"/>
                         <span class="resultNick"></span>                            
                     </td>
                 </tr>
@@ -71,9 +71,8 @@
                     </td>
                 </tr>
             </table>
-
             <div>
-                <a href="#" class="btnCancel">취소</a>
+                <a href="/jboard1/user/login.jsp" class="btnCancel">취소</a>
                 <input type="submit"   class="btnSubmit" value="회원가입"/>
             </div>    
         </form>

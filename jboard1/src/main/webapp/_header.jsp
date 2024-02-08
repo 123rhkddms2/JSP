@@ -3,15 +3,13 @@
 <%
 	// 사용자 세션 열기
 	UserDTO sessUser = (UserDTO) session.getAttribute("sessUser");
-
-	// 로그인을 하지 않았을 경우
+	
+	// 로그인을 하지 않았을 겨우
 	if(sessUser == null){
 		response.sendRedirect("/jboard1/user/login.jsp?code=102");
 		return;
 	}
-
 %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
