@@ -10,14 +10,13 @@
 <%@page import="javax.naming.InitialContext"%>
 <%@ page contentType="application/json;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	
-	List<User1DTO> user1s = new ArrayList<>();
+	List<User1DTO> user1s = new ArrayList<>();	
 
-	try{
+	try {
 		// 1단계 - JNDI 서비스 객체 생성
 		Context ctx = (Context) new InitialContext().lookup("java:comp/env");
 		
-		// 2단계 - 커넥션풀 객체 생성
+		// 2단계 - 커넥션풀 객체 생성 후 접속객체 가져오기
 		DataSource ds = (DataSource) ctx.lookup("jdbc/studydb");
 		Connection conn = ds.getConnection();
 		
@@ -33,6 +32,7 @@
 			user1.setAge(rs.getInt(5));
 			user1s.add(user1);
 		}
+		
 		rs.close();
 		stmt.close();
 		conn.close();
@@ -43,9 +43,6 @@
 
 	// JSON 출력
 	Gson gson = new Gson();
-	String strJson = gson.toJson(user1s);
-	out.print(strJson);
-	
-	
-	
+	String strJson = gson.toJson(user1s);	
+	out.print(strJson);	
 %>
