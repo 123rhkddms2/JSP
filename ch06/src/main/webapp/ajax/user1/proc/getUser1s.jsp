@@ -1,13 +1,13 @@
-<%@page import="com.google.gson.Gson"%>
 <%@page import="ch06.User1DTO"%>
-<%@page import="java.util.List"%>
+<%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="javax.sql.DataSource"%>
-<%@page import="javax.naming.Context"%>
 <%@page import="javax.naming.InitialContext"%>
+<%@page import="javax.naming.Context"%>
 <%@ page contentType="application/json;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	List<User1DTO> user1s = new ArrayList<>();	
