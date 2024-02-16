@@ -10,6 +10,8 @@
 %>
 
 <%@ include file="./_header.jsp" %>
+<script src="/jboard1/js/validation.js"></script>
+
 <main>
     <section class="register">
         <form action="/jboard1/user/proc/registerProc.jsp" method="post">
@@ -20,8 +22,8 @@
                     <td>아이디</td>
                     <td>
                         <input type="text" name="uid" required placeholder="아이디 입력"/>
-                        <button><img src="../images/chk_id.gif" alt=""></button>
-                        <span class="resultId"></span>
+                        <button id="btnCheckUid"><img src="../images/chk_id.gif" alt=""></button>
+                        <span class="resultUid"></span>
                     </td>
                 </tr>
                 <tr>
@@ -43,7 +45,8 @@
                 <tr>
                     <td>이름</td>
                     <td>
-                        <input type="text" name="name" required placeholder="이름 입력"/>                            
+                        <input type="text" name="name" required placeholder="이름 입력"/>
+						<span class="resultName"></span>
                     </td>
                 </tr>
                 <tr>
@@ -51,6 +54,7 @@
                     <td>
                         <p>공백없이 한글, 영문, 숫자만 입력가능</p>
                         <input type="text" name="nick" required placeholder="별명 입력"/>
+                        <button id="btnCheckNick"><img src="../images/chk_id.gif" alt=""></button>
                         <span class="resultNick"></span>                            
                     </td>
                 </tr>
@@ -58,12 +62,16 @@
                     <td>E-Mail</td>
                     <td>
                         <input type="email" name="email" required placeholder="이메일 입력"/>
+                        <button id="btnCheckEmail"><img src="../images/chk_id.gif" alt=""></button>
+                        <span class="resultEmail"></span>   
                     </td>
                 </tr>
                 <tr>
                     <td>휴대폰</td>
                     <td>
                         <input type="text" name="hp" required placeholder="- 포함 13자리 입력" minlength="13" maxlength="13" />
+                        <button id="btnCheckHp"><img src="../images/chk_id.gif" alt=""></button>
+                        <span class="resultHp"></span>
                     </td>
                 </tr>
                 <tr>
