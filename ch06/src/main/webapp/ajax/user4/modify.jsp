@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>ajax::user2</title>
+		<title>ajax::user4</title>
 		<!-- 
 			날짜 : 2024/02/15
 			이름 : 김광은
@@ -23,13 +23,17 @@
 					
 					const uid   = formUser.uid.value;
 					const name  = formUser.name.value;
-					const birth = formUser.birth.value;
+					const gender = formUser.gender.value;
+					const age = formUser.age.value;
+					const hp = formUser.hp.value;
 					const addr    = formUser.addr.value;
 					
 					const jsonData = {
 						"uid": uid,
 						"name": name,
-						"birth": birth,
+						"gender": gender,
+						"age": age,
+						"hp": hp,
 						"addr": addr						
 					};
 					
@@ -39,7 +43,7 @@
 					*/
 					$.ajax({
 						method: 'POST',
-						url: './proc/putUser2.jsp',
+						url: './proc/putUser4.jsp',
 						data: jsonData,
 						success: function(data){
 							
@@ -62,7 +66,7 @@
 				
 				// 서버요청
 				const xhr = new XMLHttpRequest();
-				xhr.open('GET', './proc/getUser2.jsp?uid='+value);
+				xhr.open('GET', './proc/getUser4.jsp?uid='+value);
 				xhr.send();
 				
 				// 응답처리
@@ -78,7 +82,9 @@
 							
 							formUser.uid.value = resData.uid;
 							formUser.name.value = resData.name;
-							formUser.birth.value = resData.birth;
+							formUser.gender.value = resData.gender;
+							formUser.age.value = resData.age;
+							formUser.hp.value = resData.hp;
 							formUser.addr.value = resData.addr;
 							
 						}else{
@@ -91,7 +97,7 @@
 		</script>
 	</head>
 	<body>
-		<h3>user2 수정</h3>
+		<h3>user4 수정</h3>
 		<a href="./list.jsp">목록이동</a>
 		<form action="#"> 
 			<table border="1">
@@ -104,8 +110,16 @@
 					<td><input type="text" name="name"></td>
 				</tr>
 				<tr>
-					<td>생년월일</td>
-					<td><input type="date" name="birth"></td>
+					<td>성별</td>
+					<td><input type="text" name="gender"></td>
+				</tr>
+				<tr>
+					<td>나이</td>
+					<td><input type="text" name="age"></td>
+				</tr>
+				<tr>
+					<td>휴대폰</td>
+					<td><input type="text" name="hp"></td>
 				</tr>
 				<tr>
 					<td>주소</td>

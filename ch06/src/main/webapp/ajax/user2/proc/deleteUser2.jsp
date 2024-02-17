@@ -19,7 +19,7 @@
 		DataSource ds = (DataSource) ctx.lookup("jdbc/studydb");
 		Connection conn = ds.getConnection();
 		
-		PreparedStatement psmt = conn.prepareStatement("DELETE FROM `User1` WHERE `uid`=?");
+		PreparedStatement psmt = conn.prepareStatement("DELETE FROM `User2` WHERE `uid`=?");
 		psmt.setString(1, uid);
 		
 		result = psmt.executeUpdate();

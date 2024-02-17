@@ -4,13 +4,10 @@
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
-<%@ page contentType="application/json;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
 	String uid   = request.getParameter("uid");	
-	String name  = request.getParameter("name");	
-	String birth = request.getParameter("birth");	
-	String addr    = request.getParameter("addr");	
 
 	int result = 0;
 	
@@ -22,11 +19,8 @@
 		DataSource ds = (DataSource) ctx.lookup("jdbc/studydb");
 		Connection conn = ds.getConnection();
 		
-		PreparedStatement psmt = conn.prepareStatement("UPDATE `User2` SET `name`=?, `birth`=?, `addr`=? WHERE `uid`=?");
-		psmt.setString(1, name);
-		psmt.setString(2, birth);
-		psmt.setString(3, addr);
-		psmt.setString(4, uid);
+		PreparedStatement psmt = conn.prepareStatement("DELETE FROM `User3` WHERE `uid`=?");
+		psmt.setString(1, uid);
 		
 		result = psmt.executeUpdate();
 		

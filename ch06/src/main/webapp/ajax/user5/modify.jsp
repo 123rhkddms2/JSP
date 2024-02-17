@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>ajax::user2</title>
+		<title>ajax::user5</title>
 		<!-- 
 			날짜 : 2024/02/15
 			이름 : 김광은
@@ -21,15 +21,17 @@
 				btnSubmit.onclick = (e) => {
 					e.preventDefault(); // 기본 폼 전송 취소
 					
-					const uid   = formUser.uid.value;
+					const seq   = formUser.seq.value;
 					const name  = formUser.name.value;
-					const birth = formUser.birth.value;
+					const gender = formUser.gender.value;
+					const age = formUser.age.value;
 					const addr    = formUser.addr.value;
 					
 					const jsonData = {
-						"uid": uid,
+						"seq": seq,
 						"name": name,
-						"birth": birth,
+						"gender": gender,
+						"age": age,
 						"addr": addr						
 					};
 					
@@ -39,7 +41,7 @@
 					*/
 					$.ajax({
 						method: 'POST',
-						url: './proc/putUser2.jsp',
+						url: './proc/putUser5.jsp',
 						data: jsonData,
 						success: function(data){
 							
@@ -62,7 +64,7 @@
 				
 				// 서버요청
 				const xhr = new XMLHttpRequest();
-				xhr.open('GET', './proc/getUser2.jsp?uid='+value);
+				xhr.open('GET', './proc/getUser5.jsp?seq='+value);
 				xhr.send();
 				
 				// 응답처리
@@ -76,9 +78,10 @@
 							const resData = JSON.parse(xhr.responseText);
 							console.log(resData);
 							
-							formUser.uid.value = resData.uid;
+							formUser.seq.value = resData.seq;
 							formUser.name.value = resData.name;
-							formUser.birth.value = resData.birth;
+							formUser.gender.value = resData.gender;
+							formUser.age.value = resData.age;
 							formUser.addr.value = resData.addr;
 							
 						}else{
@@ -91,21 +94,25 @@
 		</script>
 	</head>
 	<body>
-		<h3>user2 수정</h3>
+		<h3>user5 수정</h3>
 		<a href="./list.jsp">목록이동</a>
 		<form action="#"> 
 			<table border="1">
 				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="uid" readonly></td>
+					<td>번호</td>
+					<td><input type="text" name="seq" readonly></td>
 				</tr>
 				<tr>
 					<td>이름</td>
 					<td><input type="text" name="name"></td>
 				</tr>
 				<tr>
-					<td>생년월일</td>
-					<td><input type="date" name="birth"></td>
+					<td>성별</td>
+					<td><input type="text" name="gender"></td>
+				</tr>
+				<tr>
+					<td>나이</td>
+					<td><input type="text" name="age"></td>
 				</tr>
 				<tr>
 					<td>주소</td>

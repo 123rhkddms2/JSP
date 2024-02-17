@@ -1,4 +1,4 @@
-<%@page import="ch06.User2DTO"%>
+<%@page import="ch06.User4DTO"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -10,7 +10,7 @@
 <%@page import="javax.naming.Context"%>
 <%@ page contentType="application/json;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	List<User2DTO> user1s = new ArrayList<>();	
+	List<User4DTO> user1s = new ArrayList<>();	
 
 	try {
 		// 1단계 - JNDI 서비스 객체 생성
@@ -21,15 +21,17 @@
 		Connection conn = ds.getConnection();
 		
 		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT * FROM `User2`");
+		ResultSet rs = stmt.executeQuery("SELECT * FROM `User4`");
 		
 		while(rs.next()){
-			User2DTO user2 = new User2DTO();
-			user2.setUid(rs.getString(1));
-			user2.setName(rs.getString(2));
-			user2.setBirth(rs.getString(3));
-			user2.setAddr(rs.getString(4));
-			user1s.add(user2);
+			User4DTO user4 = new User4DTO();
+			user4.setUid(rs.getString(1));
+			user4.setName(rs.getString(2));
+			user4.setGender(rs.getString(3));
+			user4.setAge(rs.getString(4));
+			user4.setHp(rs.getString(5));
+			user4.setAddr(rs.getString(6));
+			user1s.add(user4);
 		}
 		
 		rs.close();

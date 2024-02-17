@@ -10,6 +10,7 @@
 	String uid   = request.getParameter("uid");	
 	String name  = request.getParameter("name");	
 	String birth = request.getParameter("birth");	
+	String hp = request.getParameter("hp");	
 	String addr    = request.getParameter("addr");	
 
 	int result = 0;
@@ -22,11 +23,12 @@
 		DataSource ds = (DataSource) ctx.lookup("jdbc/studydb");
 		Connection conn = ds.getConnection();
 		
-		PreparedStatement psmt = conn.prepareStatement("UPDATE `User2` SET `name`=?, `birth`=?, `addr`=? WHERE `uid`=?");
+		PreparedStatement psmt = conn.prepareStatement("UPDATE `User3` SET `name`=?, `birth`=?, `hp`=?, `addr`=? WHERE `uid`=?");
 		psmt.setString(1, name);
 		psmt.setString(2, birth);
-		psmt.setString(3, addr);
-		psmt.setString(4, uid);
+		psmt.setString(3, hp);
+		psmt.setString(4, addr);
+		psmt.setString(5, uid);
 		
 		result = psmt.executeUpdate();
 		

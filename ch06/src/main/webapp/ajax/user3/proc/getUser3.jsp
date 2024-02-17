@@ -1,4 +1,4 @@
-<%@page import="ch06.User2DTO"%>
+<%@page import="ch06.User3DTO"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -15,19 +15,20 @@
 	DataSource ds = (DataSource) ctx.lookup("jdbc/studydb");
 	Connection conn = ds.getConnection();
 
-	PreparedStatement psmt = conn.prepareStatement("SELECT * FROM `User2` WHERE `uid`=?");
+	PreparedStatement psmt = conn.prepareStatement("SELECT * FROM `User3` WHERE `uid`=?");
 	psmt.setString(1, uid);
 	
 	ResultSet rs = psmt.executeQuery();
 	
-	User2DTO user2 = null;
+	User3DTO user3 = null;
 	
 	if(rs.next()){
-		user2 = new User2DTO();
-		user2.setUid(rs.getString(1));
-		user2.setName(rs.getString(2));
-		user2.setBirth(rs.getString(3));
-		user2.setAddr(rs.getString(4));
+		user3 = new User3DTO();
+		user3.setUid(rs.getString(1));
+		user3.setName(rs.getString(2));
+		user3.setBirth(rs.getString(3));
+		user3.setHp(rs.getString(4));
+		user3.setAddr(rs.getString(5));
 	}
 	
 	rs.close();
@@ -36,6 +37,6 @@
 	
 	// JSON 출력
 	Gson gson = new Gson();
-	String strJson = gson.toJson(user2);
+	String strJson = gson.toJson(user3);
 	out.print(strJson);
 %>

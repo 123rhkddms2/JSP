@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>ajax::user2</title>
+		<title>ajax::user3</title>
 		<!-- 
 			날짜 : 2024/02/15
 			이름 : 김광은
@@ -24,12 +24,14 @@
 					const uid   = formUser.uid.value;
 					const name  = formUser.name.value;
 					const birth = formUser.birth.value;
+					const hp = formUser.hp.value;
 					const addr    = formUser.addr.value;
 					
 					const jsonData = {
 						"uid": uid,
 						"name": name,
 						"birth": birth,
+						"hp": hp,
 						"addr": addr						
 					};
 					
@@ -39,7 +41,7 @@
 					*/
 					$.ajax({
 						method: 'POST',
-						url: './proc/putUser2.jsp',
+						url: './proc/putUser3.jsp',
 						data: jsonData,
 						success: function(data){
 							
@@ -62,7 +64,7 @@
 				
 				// 서버요청
 				const xhr = new XMLHttpRequest();
-				xhr.open('GET', './proc/getUser2.jsp?uid='+value);
+				xhr.open('GET', './proc/getUser3.jsp?uid='+value);
 				xhr.send();
 				
 				// 응답처리
@@ -79,6 +81,7 @@
 							formUser.uid.value = resData.uid;
 							formUser.name.value = resData.name;
 							formUser.birth.value = resData.birth;
+							formUser.hp.value = resData.hp;
 							formUser.addr.value = resData.addr;
 							
 						}else{
@@ -91,7 +94,7 @@
 		</script>
 	</head>
 	<body>
-		<h3>user2 수정</h3>
+		<h3>user3 수정</h3>
 		<a href="./list.jsp">목록이동</a>
 		<form action="#"> 
 			<table border="1">
@@ -106,6 +109,10 @@
 				<tr>
 					<td>생년월일</td>
 					<td><input type="date" name="birth"></td>
+				</tr>
+				<tr>
+					<td>휴대폰</td>
+					<td><input type="text" name="hp"></td>
 				</tr>
 				<tr>
 					<td>주소</td>

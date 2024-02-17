@@ -7,9 +7,10 @@
 <%@ page contentType="application/json;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
-	String uid   = request.getParameter("uid");	
+	String seq   = request.getParameter("seq");	
 	String name  = request.getParameter("name");	
-	String birth = request.getParameter("birth");	
+	String gender = request.getParameter("gender");	
+	String age = request.getParameter("age");	
 	String addr    = request.getParameter("addr");	
 
 	int result = 0;
@@ -22,11 +23,12 @@
 		DataSource ds = (DataSource) ctx.lookup("jdbc/studydb");
 		Connection conn = ds.getConnection();
 		
-		PreparedStatement psmt = conn.prepareStatement("UPDATE `User2` SET `name`=?, `birth`=?, `addr`=? WHERE `uid`=?");
+		PreparedStatement psmt = conn.prepareStatement("UPDATE `User5` SET `name`=?, `gender`=?, `age`=?, `addr`=? WHERE `seq`=?");
 		psmt.setString(1, name);
-		psmt.setString(2, birth);
-		psmt.setString(3, addr);
-		psmt.setString(4, uid);
+		psmt.setString(2, gender);
+		psmt.setString(3, age);
+		psmt.setString(4, addr);
+		psmt.setString(5, seq);
 		
 		result = psmt.executeUpdate();
 		
