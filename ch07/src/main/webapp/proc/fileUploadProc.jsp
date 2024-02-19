@@ -39,8 +39,7 @@
 			
 			FileItem item = iter.next();
 			
-			if(!item.isFormField()){
-				// 파일 업로드 처리
+			if(!item.isFormField()){	//첨부파일 이면
 				
 				// 확장자 추출
 				String fileName = item.getName();
