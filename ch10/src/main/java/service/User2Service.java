@@ -26,9 +26,10 @@ public class User2Service {
 		return dao.selectUser2s();
 	}
 	public void updateUser2(User2DTO user) {
-		
+		dao.updateUser2(user);
 	}
+	
 	public void deleteUser2(String uid) {
-		
+		dao.deleteUser2(uid);
 	}
 }

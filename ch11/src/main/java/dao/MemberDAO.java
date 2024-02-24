@@ -117,5 +117,19 @@ public class MemberDAO extends DBHelper{
 		}
 	}
 	
-	public void deleteMember() {}	
+	public void deleteMember(String uid) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement("DELETE FROM `Member` WHERE `uid`=?");
+			psmt.setString(1, uid);
+			psmt.executeUpdate();
+			
+			logger.info("psmt : " + psmt);
+			closeAll();
+		}catch (Exception e) {
+			// 로그 출력
+			logger.error("selectMembers() - " + e.getMessage());
+		}
+	}
+	
 }
