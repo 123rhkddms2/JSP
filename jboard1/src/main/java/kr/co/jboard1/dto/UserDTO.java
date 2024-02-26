@@ -103,6 +103,7 @@ public class UserDTO {
 	public void setLeaveDate(String leaveDate) {
 		this.leaveDate = leaveDate;
 	}
+	
 	@Override
 	public String toString() {
 		return "UserDTO [uid=" + uid + ", pass=" + pass + ", name=" + name + ", nick=" + nick + ", email=" + email
