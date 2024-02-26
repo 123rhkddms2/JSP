@@ -11,10 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import dto.User1DTO;
 import dto.User2DTO;
+import service.User1Service;
+import service.User2Service;
 
 @WebServlet("/user2/modify.do")
 public class ModifyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private User2Service service = User2Service.getInstance();
 	
 	@Override
 	public void init() throws ServletException {
