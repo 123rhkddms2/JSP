@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.User2DTO;
-<<<<<<< HEAD
-import service.User1Service;
-=======
->>>>>>> 8173f6b3ab25dc751bcf48ed1873b1b15056c323
 import service.User2Service;
 
 @WebServlet("/user2/modify.do")
