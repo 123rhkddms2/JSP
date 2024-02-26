@@ -1,4 +1,4 @@
-package controller.user2;
+package controller.user4;
 
 import java.io.IOException;
 
@@ -9,18 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.User2DTO;
-<<<<<<< HEAD
-import service.User1Service;
-=======
->>>>>>> 8173f6b3ab25dc751bcf48ed1873b1b15056c323
-import service.User2Service;
+import dto.User4DTO;
+import service.User4Service;
 
-@WebServlet("/user2/modify.do")
+@WebServlet("/user4/modify.do")
 public class ModifyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private User2Service service = User2Service.getInstance();
+	private User4Service service = User4Service.getInstance();
 	
 	@Override
 	public void init() throws ServletException {
@@ -32,12 +28,12 @@ public class ModifyController extends HttpServlet {
 		String uid = req.getParameter("uid");
 		
 		// 수정 사용자 조회
-		User2DTO user = service.selectUser2(uid);
+		User4DTO user = service.selectUser4(uid);
 		
 		// View에서 데이터 공유를 위해 request Scope에 데이터 설정
 		req.setAttribute("user", user);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/user2/modify.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/user4/modify.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
@@ -46,17 +42,21 @@ public class ModifyController extends HttpServlet {
 		
 		String uid   = req.getParameter("uid");
 		String name  = req.getParameter("name");
-		String birth = req.getParameter("birth");
+		String gender = req.getParameter("gender");
+		String age = req.getParameter("age");
+		String hp = req.getParameter("hp");
 		String addr    = req.getParameter("addr");
 	
-		User2DTO user = new User2DTO();
+		User4DTO user = new User4DTO();
 		user.setUid(uid);
 		user.setName(name);
-		user.setBirth(birth);
+		user.setGender(gender);
+		user.setAge(age);
+		user.setHp(hp);
 		user.setAddr(addr);
 		
-		service.updateUser2(user);
+		service.updateUser4(user);
 		
-		resp.sendRedirect("/ch10/user2/list.do");
+		resp.sendRedirect("/ch10/user4/list.do");
 	}
 }

@@ -13,6 +13,9 @@ public class User5DTO {
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
+	public void setSeq(String seq) {
+		this.seq = Integer.parseInt(seq);
+	}
 	public String getName() {
 		return name;
 	}
@@ -30,6 +33,9 @@ public class User5DTO {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	public void setAge(String age) {
+		this.age = Integer.parseInt(age);
 	}
 	public String getAddr() {
 		return addr;

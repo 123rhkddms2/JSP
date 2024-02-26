@@ -79,10 +79,29 @@ public class User2DAO extends DBHelper{
 			
 	}
 	public void updateUser2(User2DTO user) {
-		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement("UPDATE `User2` SET `name`=?, `birth`=?, `addr`=? WHERE `uid`=?");
+			psmt.setString(1, user.getName());
+			psmt.setString(2, user.getBirth());
+			psmt.setString(3, user.getAddr());
+			psmt.setString(4, user.getUid());
+			psmt.executeUpdate();
+			closeAll();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	public void deleteUser2(String uid) {
-		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement("DELETE FROM `User2` WHERE `uid`=?");
+			psmt.setString(1, uid);
+			psmt.executeUpdate();
+			closeAll();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
+	
 }
