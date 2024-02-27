@@ -1,13 +1,13 @@
 package kr.co.jboard2.dto;
 
 public class FileDTO {
+	
 	private int fno;
 	private int ano;
 	private String oName;
 	private String sName;
 	private int download;
 	private String rdate;
-	
 	public int getFno() {
 		return fno;
 	}

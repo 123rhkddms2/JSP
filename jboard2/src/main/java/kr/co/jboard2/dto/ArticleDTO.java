@@ -19,13 +19,12 @@ public class ArticleDTO {
 	// 추가필드
 	private List<FileDTO> fileDTOs;
 	
-	public List<FileDTO> getFileDTO() {
+	public List<FileDTO> getFileDTOs() {
 		return fileDTOs;
 	}
-	public void setFileDTO(List<FileDTO> fileDTOs) {
+	public void setFileDTOs(List<FileDTO> fileDTOs) {
 		this.fileDTOs = fileDTOs;
 	}
-	
 	
 	
 	public int getNo() {

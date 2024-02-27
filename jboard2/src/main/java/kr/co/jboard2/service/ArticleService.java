@@ -32,8 +32,8 @@ public class ArticleService {
 	
 	private ArticleDAO dao = ArticleDAO.getInstance();
 	
-	public void insertArticle(ArticleDTO articleDTO) {
-		dao.insertArticle(articleDTO);
+	public int insertArticle(ArticleDTO articleDTO) {
+		return dao.insertArticle(articleDTO);
 	}
 	public ArticleDTO selectArticle(int no) {
 		return dao.selectArticle(no);
@@ -80,9 +80,8 @@ public class ArticleService {
 				if(!item.isFormField()) {
 					// 첨부 파일일 경우
 					if(!item.getName().isEmpty()) {
-
-						count ++;
-						
+						count++;
+											
 						String fname = item.getName();
 						int idx = fname.lastIndexOf(".");
 						String ext = fname.substring(idx);
@@ -97,7 +96,6 @@ public class ArticleService {
 						File file = new File(uploadPath + File.separator + saveName);
 						item.write(file);
 					}
-					
 				}else {
 					// 폼 데이터일 경우
 					String fieldName  = item.getFieldName();
@@ -112,9 +110,7 @@ public class ArticleService {
 					}
 				}
 			}
-			
 			articleDTO.setFile(count);
-			
 		}catch (Exception e) {
 			logger.error("fileUpload : " + e.getMessage());
 		}

@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.jboard2.dto.ArticleDTO;
+import kr.co.jboard2.dto.FileDTO;
 import kr.co.jboard2.service.ArticleService;
 import kr.co.jboard2.service.FileService;
 
@@ -48,22 +49,23 @@ public class WriteController extends HttpServlet {
 		*/
 		String regip   = req.getRemoteAddr();
 		
+		// 파일 업로드
 		ArticleDTO articleDTO = articleService.fileUpload(req);
 		articleDTO.setRegip(regip);
 		
 		logger.debug(""+articleDTO);
 		
 		// 글 등록
-		articleService.insertArticle(articleDTO);
+		int pk = articleService.insertArticle(articleDTO);
 		
 		// 파일 등록
 		List<FileDTO> files = articleDTO.getFileDTOs();
 		
 		for(FileDTO fileDTO : files) {
+			fileDTO.setAno(pk);
 			fileService.insertFile(fileDTO);
 		}
 		
 		resp.sendRedirect("/jboard2/list.do");
 	}
 }
-
