@@ -2,7 +2,7 @@
 <%@ include file="./_header.jsp" %>
         <main id="board">
             <section class="list">                
-                <form action="#" class="search">
+                <form action="/jboard2/list.do" class="search">
                     <select name="searchType">
                         <option value="title">제목</option>
                         <option value="content">내용</option>
