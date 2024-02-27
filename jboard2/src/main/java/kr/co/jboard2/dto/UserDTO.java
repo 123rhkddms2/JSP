@@ -1,7 +1,7 @@
 package kr.co.jboard2.dto;
 
 public class UserDTO {
-	
+
 	private String uid;
 	private String pass;
 	private String name;
@@ -16,7 +16,6 @@ public class UserDTO {
 	private String sms;
 	private String rdate;
 	private String leaveDate;
-	
 	public String getUid() {
 		return uid;
 	}
@@ -103,7 +102,7 @@ public class UserDTO {
 	}
 	@Override
 	public String toString() {
-		return "RegisterDTO [uid=" + uid + ", pass=" + pass + ", name=" + name + ", nick=" + nick + ", email=" + email
+		return "UserDTO [uid=" + uid + ", pass=" + pass + ", name=" + name + ", nick=" + nick + ", email=" + email
 				+ ", hp=" + hp + ", role=" + role + ", zip=" + zip + ", addr1=" + addr1 + ", addr2=" + addr2
 				+ ", regip=" + regip + ", sms=" + sms + ", rdate=" + rdate + ", leaveDate=" + leaveDate + "]";
 	}

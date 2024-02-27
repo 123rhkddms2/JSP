@@ -18,6 +18,14 @@ public class ArticleDTO {
 	
 	// 추가필드
 	private List<FileDTO> fileDTOs;
+	private String nick;
+	
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
 	
 	public List<FileDTO> getFileDTOs() {
 		return fileDTOs;
@@ -25,7 +33,6 @@ public class ArticleDTO {
 	public void setFileDTOs(List<FileDTO> fileDTOs) {
 		this.fileDTOs = fileDTOs;
 	}
-	
 	
 	public int getNo() {
 		return no;
