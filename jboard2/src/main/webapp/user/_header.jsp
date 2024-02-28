@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>아이디 찾기</title>
-    <link rel="stylesheet" href="../css/style.css"/>
+    <title>로그인</title>
+    <link rel="stylesheet" href="/jboard2/css/style.css"/>
 </head>
 <body>
     <div id="wrapper">

@@ -9,11 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.jboard2.dto.ArticleDTO;
+import kr.co.jboard2.dto.UserDTO;
 import kr.co.jboard2.service.ArticleService;
 
 @WebServlet("/list.do")
@@ -29,7 +31,7 @@ public class ListController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-					
+		
 		// 데이터 수신
 		String pg = req.getParameter("pg");
 		

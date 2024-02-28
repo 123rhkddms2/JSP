@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.jboard2.dao.FileDAO;
 import kr.co.jboard2.dto.ArticleDTO;
 import kr.co.jboard2.dto.FileDTO;
 import kr.co.jboard2.service.ArticleService;
@@ -40,7 +41,6 @@ public class WriteController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
 		/*
 		// Multipart/form-data는 getParameter 수신 안됨
 		String title   = req.getParameter("title");
@@ -51,8 +51,7 @@ public class WriteController extends HttpServlet {
 		
 		// 파일 업로드
 		ArticleDTO articleDTO = articleService.fileUpload(req);
-		articleDTO.setRegip(regip);
-		
+		articleDTO.setRegip(regip);		
 		logger.debug(""+articleDTO);
 		
 		// 글 등록
@@ -63,6 +62,8 @@ public class WriteController extends HttpServlet {
 		
 		for(FileDTO fileDTO : files) {
 			fileDTO.setAno(pk);
+			logger.debug(""+fileDTO);
+			
 			fileService.insertFile(fileDTO);
 		}
 		

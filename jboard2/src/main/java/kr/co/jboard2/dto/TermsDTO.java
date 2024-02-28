@@ -1,7 +1,7 @@
 package kr.co.jboard2.dto;
 
 public class TermsDTO {
-	
+
 	private String terms;
 	private String privacy;
 	private String sms;
@@ -29,4 +29,6 @@ public class TermsDTO {
 	public String toString() {
 		return "TermsDTO [terms=" + terms + ", privacy=" + privacy + ", sms=" + sms + "]";
 	}
+	
+	
 }

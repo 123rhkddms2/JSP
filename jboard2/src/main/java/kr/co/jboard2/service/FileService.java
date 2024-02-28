@@ -6,6 +6,7 @@ import kr.co.jboard2.dao.FileDAO;
 import kr.co.jboard2.dto.FileDTO;
 
 public class FileService {
+	
 	private static FileService instance = new FileService();
 	public static FileService getInstance() {
 		return instance;
@@ -18,7 +19,7 @@ public class FileService {
 		dao.insertFile(fileDTO);
 	} 
 	
-	public FileDTO selectFile(int fno) {
+	public FileDTO selectFile(String fno) {
 		return dao.selectFile(fno);
 	} 
 	public List<FileDTO> selectFiles() {
@@ -27,7 +28,7 @@ public class FileService {
 	public void updateFile(FileDTO fileDTO) {
 		dao.updateFile(fileDTO);
 	} 
-	public void deleteFile(int fno) {
-		dao.deleteFile(fno);
+	public int deleteFile(String fno) {
+		return dao.deleteFile(fno);
 	} 
 }
