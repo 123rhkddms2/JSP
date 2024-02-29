@@ -2,7 +2,6 @@ package kr.co.jboard2.db;
 
 public class SQL {
 
-	
 	public static final String SELECT_TERMS = "SELECT * FROM `terms`";
 	public static final String SELECT_COUNT_USER = "SELECT COUNT(*) FROM `user` ";
 	public static final String WHERE_UID   = "WHERE `uid`=?";
@@ -71,7 +70,8 @@ public class SQL {
 												+ "ORDER BY `no` ASC";
 	
 	public static final String SELECT_FILE = "SELECT * FROM `File` WHERE `fno`=?";
-	public static final String SELECT_FILE_FOR_ANO = "SELECT `ano` FROM `File` WHERE `fno`=?";
+	public static final String SELECT_FILE_FOR_DELETE = "SELECT `ano`, `sname` FROM `File` WHERE `fno`=?";
+	
 
 	public static final String UPDATE_ARTICLE = "UPDATE `Article` SET `title`=?, `content`=?, `file`=? WHERE `no`=?";
 	public static final String UPDATE_ARTICLE_FOR_FILE_COUNT = "UPDATE `Article` SET `file`=`file`-1 WHERE `no`=?";
