@@ -11,9 +11,9 @@
 		
 		// 댓글 삭제(동적 이벤트 처리)
 		document.addEventListener('click', function(e){
-			e.preventDefault();
 			
 			if(e.target.classList == 'remove'){
+				e.preventDefault();								//e.preventDefault();가 document.addEventListener('click', function(e){ 여기에 있으면 document가 최상단 단위이므로
 				
 				// 해당 삭제에서 가장 가까운 부모 article 문서객체 생성
 				const article = e.target.closest('article');
