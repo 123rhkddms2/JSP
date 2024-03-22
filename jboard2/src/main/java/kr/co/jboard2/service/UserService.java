@@ -60,8 +60,8 @@ public class UserService {
 		session.setAttribute("code", String.valueOf(code)); 
 		
 		// 기본정보
-		String sender = "chhak0503@gmail.com";
-		String password = "skht tzwh lukh orvp"; // 앱 비밀번호
+		String sender = "123rhkddms2@gmail.com";
+		String password = "eyat mcbg kpjj sxzb"; // 앱 비밀번호
 		String title = "jboard2 인증코드 입니다.";
 		String content = "<h1>인증코드는 " + code + "입니다.</h1>";
 		
